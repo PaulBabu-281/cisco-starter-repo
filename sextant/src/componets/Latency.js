@@ -4,7 +4,6 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 const client = new W3CWebSocket("ws://127.0.0.1:55455");
 
 function Latency() {
-  const [start, setStart] = useState(Date.now());
   const [lag, setLag] = useState();
 
   useEffect(() => {
@@ -13,12 +12,11 @@ function Latency() {
     };
 
     client.onmessage = (message) => {
-      setStart(window.performance.now());
-      setLag(message.timeStamp);
+      setLag(window.performance.now() - message.timeStamp);
     };
   }, []);
 
-  return <p className="center">Latency : {start - lag}ms</p>;
+  return <p className="center">Latency : {lag}ms</p>;
 }
 
 export default Latency;
