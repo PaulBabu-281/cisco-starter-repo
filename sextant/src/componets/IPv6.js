@@ -5,7 +5,6 @@ function IPv6() {
     fetch("https://api64.ipify.org/?format=json")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setipv6(data.ip);
       });
   }, []);
