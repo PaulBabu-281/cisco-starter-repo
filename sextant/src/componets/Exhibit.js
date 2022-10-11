@@ -1,12 +1,15 @@
 import React from "react";
 import "./Exhibit.css";
+import IPv4 from "./IPv4";
+import IPv6 from "./IPv6";
 
 function Exhibit() {
   const latency = 20;
-  const ipAddress = "75.2. 66.166";
+
   return (
     <div className="card">
-      <p className="center">Public IP Address : {ipAddress}</p>
+      <IPv4 />
+      <IPv6 />
       <p className="center">latency : {latency}ms</p>
     </div>
   );
